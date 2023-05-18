@@ -4,8 +4,8 @@ async function main() {
   // ethers.utils.parseEther("10") = 10 TT
   const contractBalance = 10;
 
-  const BetNumberExample = await ethers.getContractFactory("BetNumberExample");
-  const example = await BetNumberExample.deploy({ value: contractBalance });
+  const BetNumber = await ethers.getContractFactory("BetNumber");
+  const example = await BetNumber.deploy({ value: contractBalance });
 
   await example.deployed();
 

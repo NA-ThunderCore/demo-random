@@ -1,46 +1,61 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
+interface ThunderRandomLibraryInterface {
+}
 
-library LibThunderRNG {
-    function rand() internal returns (uint256) {
-        uint256[1] memory m;
-        assembly {
-            if iszero(call(not(0), 0x8cC9C2e145d3AA946502964B1B69CE3cD066A9C7, 0, 0, 0x0, m, 0x20)) {
-                revert(0, 0)
-            }
-        }
-        return m[0];
+
+contract Example {
+    address constant public randomNumberContractAddress = 0x8cC9C2e145d3AA946502964B1B69CE3cD066A9C7;
+    ThunderRandomLibraryInterface internal RNGLibrary;
+
+    constructor() {
+    }
+
+    function CallRand() external returns (uint256) {
     }
 }
 
-contract RandomExample {
-    event didWin(bool);
-    uint256 public contractBalance;
+// interface ThunderRandomLibraryInterface {
+//     function rand() external returns (uint256);
+// }
 
-    constructor() payable {
-        contractBalance = uint256(msg.value);
-    }
+// contract Example {
+//     address constant public randomNumberContractAddress = 0x8cC9C2e145d3AA946502964B1B69CE3cD066A9C7;
+//     ThunderRandomLibraryInterface internal RNGLibrary;
 
-    function betNumber(uint256 bet) payable external returns (bool) {
-        if (msg.value < 5) {
-            contractBalance = contractBalance + msg.value;
+//     constructor() {
+//         RNGLibrary = ThunderRandomLibraryInterface(randomNumberContractAddress);
+//     }
 
-            emit didWin(false);
-            return false;
-        }
+//     function CallRand() external returns (uint256) {
+//         uint256 randomNumber = RNGLibrary.rand();
+//         return randomNumber;
+//     }
+// }
 
-        uint256 randomNumber = LibThunderRNG.rand();
-        address payable sender = payable(msg.sender);
-        if (bet < randomNumber) {
-            sender.transfer(msg.value+1);
-            emit didWin(true);
 
-            contractBalance = contractBalance - (msg.value+1);
-            return true;
-        }
 
-        contractBalance = contractBalance + msg.value;
-        emit didWin(false);
-        return false;
-    }
-}
+
+// contract Example {
+//     event rand(uint256);
+//     address constant public randomNumberContractAddress = 0x8cC9C2e145d3AA946502964B1B69CE3cD066A9C7;
+//     ThunderRandomLibraryInterface internal RNGLibrary;
+
+//     constructor() {
+//         RNGLibrary = ThunderRandomLibraryInterface(randomNumberContractAddress);
+//     }
+
+//     function CallRand() external returns (uint256) {
+//         uint256 randomNumber = RNGLibrary.rand();
+//         emit rand(randomNumber % 100);
+//         return randomNumber % 100;
+//     }
+// }
+
+
+
+
+
+// interface ThunderRandomLibraryInterface {
+//     function rand() external returns (uint256);
+// }
