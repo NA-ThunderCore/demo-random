@@ -45,12 +45,14 @@ contract BetNumber {
 //     }
 
 //     function betNumber(uint256 bet) payable external returns (bool) {
-//         uint256 randomNumber = RNGLibrary.rand();
+//         require(msg.value >= 1, "value must more than 1");
+//         require(bet < 100, "only accept bet number lower than 100");
+//         uint256 randomNumber = RNGLibrary.rand() % 100;
 //         address payable sender = payable(msg.sender);
 //         if (bet < randomNumber) {
 //             sender.transfer(msg.value+1);
 //             emit didWin(true);
-//             contractBalance = contractBalance - (msg.value+1);
+//             contractBalance = contractBalance - 1;
 //             return true;
 //         }
 
