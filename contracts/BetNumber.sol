@@ -62,6 +62,7 @@ contract BetNumber {
 //     }
 // }
 
+// Command: 
 // yarn hardhat console --network thunder-testnet
 // const BetNumber = await ethers.getContractFactory("BetNumber");
 // const b = BetNumber.attach("0xCB68554F995C45AB7B7e238b19826cFEf964a1e5")

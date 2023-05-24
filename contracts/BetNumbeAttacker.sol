@@ -26,13 +26,8 @@ contract BetNumberAttacker {
     }
 }
 
+// Command: 
 // yarn hardhat console --network thunder-testnet
-// const BetNumber = await ethers.getContractFactory("BetNumber");
-// const b = BetNumber.attach("0xCB68554F995C45AB7B7e238b19826cFEf964a1e5")
-// await b.contractBalance()
-// await b.betNumber(ethers.constants.MaxUint256 , {value: 10})
-// await b.contractBalance()
-// let f = b.filters.didWin()
-// let b = await ethers.provider.getBlockNumber()
-// await b.queryFilter(f, b - 1000, b)
-// b.betNumber(1 , {value: 10})
+// const Attacker = await ethers.getContractFactory("BetNumberAttacker");
+// await attack.cheatBetNumber("0x76D1d38079A972BaD789719Af420da6e8DB57dE6", {gasLimit: 4100000})
+// ttdebug testnet 0xd78f1b5684d96517416aa933c5432f27ef2c9321367be1cdc720551a65faeff2
