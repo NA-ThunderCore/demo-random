@@ -2,7 +2,7 @@ import { ethers } from "hardhat";
 
 async function main() {
   // ethers.utils.parseEther("10") = 10 TT
-  const contractBalance = 10;
+  const contractBalance = 10; // 10 wei token
 
   const BetNumber = await ethers.getContractFactory("BetNumber");
   const example = await BetNumber.deploy({ value: contractBalance });

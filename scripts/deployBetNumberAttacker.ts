@@ -2,15 +2,15 @@ import { ethers } from "hardhat";
 
 async function main() {
   // ethers.utils.parseEther("10") = 10 TT
-  const contractBalance = 10; // 10 token
+  const contractBalance = 10; // 10 wei token
 
-  const BetNumber = await ethers.getContractFactory("BetNumberAttacker");
-  const example = await BetNumber.deploy({ value: contractBalance });
+  const Attacker = await ethers.getContractFactory("BetNumberAttacker");
+  const attacker = await Attacker.deploy({ value: contractBalance });
 
-  await example.deployed();
+  await attacker.deployed();
 
   console.log(
-    `Submit ${ethers.utils.formatEther(contractBalance)} TT and deployed to ${example.address}`
+    `Submit ${ethers.utils.formatEther(contractBalance)} TT and deployed to ${attacker.address}`
   );
 }
 
